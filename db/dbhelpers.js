@@ -1,11 +1,29 @@
 // complete and fix the dbhelpers
+const db = require('./index.js');
 
 
-getProductsHelper = () => 
+const dbHelpers = {
+  getProductsHelper: (callback) => {
+    db.query('SELECT * FROM products;', (err, result) => {
+      if(err) {
+        callback(err)
+      } else {
+        callback(null, result);
+      }
+    })
+  },
 
-postProductsHelper = () => 
+  postProductsHelper: () => {
 
-updateProductHelper = () => 
+  },
 
-deleteProductHelper = () => 
+  updateProductHelper: () => {
 
+  },
+
+  deleteProductHelper: () => {
+
+  }
+};
+
+module.exports = dbHelpers;
