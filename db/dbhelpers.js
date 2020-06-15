@@ -13,12 +13,19 @@ const dbHelpers = {
     })
   },
 
-  postProductsHelper: () => {
-
+  postProductsHelper: (body, callback) => {
+    // db.query(`INSERT INTO products `)
   },
 
-  updateProductHelper: () => {
-
+  updateProductHelper: (body, params, callback) => {
+    console.log(body)
+    db.query(`UPDATE products SET curr_bid=${body.bid} WHERE id=${params.id};`, (err, result) => {
+      if (err) {
+        callback(err)
+      } else {
+        callback (null, result)
+      }
+    })
   },
 
   deleteProductHelper: () => {
